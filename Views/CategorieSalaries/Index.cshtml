@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FinPaie.Models.CategorieSalarie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des catégories de salariés</h1>
+
+<p>
+    <a class="btn btn-primary btn-sm" asp-action="Create">Créer une une nouvelle catégorie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Libelle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaireDeBase)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaireDeBase)
+            </td>
+            <td>
+                <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
+                <a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
